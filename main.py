@@ -74,7 +74,6 @@ class Main(QMainWindow, Ui_main):
         # Función que busca elementos pasados de fecha y los elimina
         if self.conexion:
             fechaHoy = QDate.currentDate().toString("dd/MM/yyyy")
-            
             try:
                 self.conexion.execute("DELETE FROM Tareas WHERE Plazo_Fecha < ?", (fechaHoy,))
                 self.conexion.commit()
