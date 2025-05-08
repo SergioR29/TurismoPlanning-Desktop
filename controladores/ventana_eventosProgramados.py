@@ -52,8 +52,10 @@ class EventosPlanificados(QMainWindow, Ui_eventos):
         self.setWindowIcon(QIcon(os.getcwd() + "/recursos/iconos/eventos.png"))
         self.editarEvento.setIcon(QIcon(os.getcwd() + "/recursos/iconos/ic_editar.png"))
         self.eliminarEvento.setIcon(QIcon(os.getcwd() + "/recursos/iconos/ic_eliminar.png"))
-
+        
+        self.ayuda.setIcon(QIcon(os.getcwd() + "/recursos/iconos/ayuda.png"))
         self.actionAyuda.setIcon(QIcon(os.getcwd() + "/recursos/iconos/ayuda.png"))
+
         self.actionHTML.setIcon(QIcon(os.getcwd() + "/recursos/iconos/html.png"))
         self.actionPDF.setIcon(QIcon(os.getcwd() + "/recursos/iconos/pdf.png"))
 
@@ -61,7 +63,9 @@ class EventosPlanificados(QMainWindow, Ui_eventos):
         self.categoriaComboBox.currentTextChanged.connect(self.cargarEventosCategoria)
         self.editarEvento.clicked.connect(self.editar)
         self.eliminarEvento.clicked.connect(self.eliminar)
+
         self.actionAyuda.triggered.connect(self.mostrarAyuda)
+        self.ayuda.clicked.connect(self.mostrarAyuda)
 
         self.actionHTML.triggered.connect(self.exportarHTML)
         self.actionPDF.triggered.connect(self.exportarPDF)
@@ -285,7 +289,7 @@ class EventosPlanificados(QMainWindow, Ui_eventos):
 
     def mostrarAyuda(self):
         # Función que muestra una ayuda práctica al usuario
-        QMessageBox.information(self, "Ayuda", "Al pulsar hacia el icono de un evento aparecerán al lado del desplegable de categorías 2 botones (Editar y Eliminar).")
+        QMessageBox.information(self, "Ayuda", "Al pulsar hacia el icono de un evento aparecerán al lado del desplegable de categorías 2 botones (Editar y Eliminar). Primero hay que seleccionar una categoría de eventos.")
 
     def al_clicar_evento_tarea(self):
         # Función que devuelve el título del evento seleccionado. self.sender() devuelve el objeto que emitió la señal, que es el QPushButton evento_tarea

@@ -7,6 +7,7 @@ from xhtml2pdf import pisa
 from modelos.InitialisationError import InitialisationError
 from vistas.verSitios_ui import Ui_manejarSitios
 from controladores.ventana_Actualidad import Actualidad
+from controladores.ventana_planificarTareas import PlanificarTareas
 
 class VerSitios(QMainWindow, Ui_manejarSitios):
     closing = Signal()
@@ -22,8 +23,10 @@ class VerSitios(QMainWindow, Ui_manejarSitios):
 
         # Configuraciones menores
         self.aviso_ciudadNoSeleccionada.hide()
+        self.planificar_visita.hide()
         self.ubiClima_sitio.hide()
         self.frame_sitios.hide()
+        self.aviso_sitio.hide()
 
         # Copiar la BD a la carpeta del usuario (para que no sea de sólo lectura)
         rutaBD = os.getcwd() + "/modelos/datos.db"
@@ -46,6 +49,7 @@ class VerSitios(QMainWindow, Ui_manejarSitios):
 
         # Configurar iconos
         self.setWindowIcon(QIcon(os.getcwd() + "/recursos/iconos/ic_SitiosVentana.png"))
+        self.planificar_visita.setIcon(QIcon(os.getcwd() + "/recursos/iconos/visita_turismo.png"))
         self.ubiClima_sitio.setIcon(QIcon(os.getcwd() + "/recursos/iconos/UbiClima.png"))
         self.actionHTML.setIcon(QIcon(os.getcwd() + "/recursos/iconos/html.png"))
         self.actionPDF.setIcon(QIcon(os.getcwd() + "/recursos/iconos/pdf.png"))
@@ -58,7 +62,34 @@ class VerSitios(QMainWindow, Ui_manejarSitios):
         self.sitioComboBox.currentTextChanged.connect(self.cargarSitio)
         self.actionHTML.triggered.connect(self.exportarHTML)
         self.actionPDF.triggered.connect(self.exportarPDF)
+        self.planificar_visita.clicked.connect(self.planificarVisita)
         self.ubiClima_sitio.clicked.connect(self.verUbicSitio)
+
+    def vaciarDatos(self):
+        # Función que vacía los datos ingresados de una visita al cancelarla
+        self.ventana.descT.setPlainText("")
+
+    def planificarVisita(self):
+        # Función que ayuda al usuario a planificar una visita al sitio seleccionado
+        self.ventana = PlanificarTareas()
+        self.ventana.closing.connect(self.cerrarVentana)
+        self.ventana.cerrar.clicked.connect(self.vaciarDatos)
+
+        self.ventana.tituloLineEdit.setText("Visita a " + (self.sitioComboBox.currentText() if len(self.sitioComboBox.currentText()) > 0 else self.ciudadComboBox.currentText()))
+        if self.sitioComboBox.currentIndex() == -1:
+            try:
+                ciudad = self.conexion.execute("SELECT c.Descripcion FROM Ciudades c WHERE c.Nombre = ?", (self.ciudadComboBox.currentText(),)).fetchone()
+                if ciudad[0] != None:
+                    self.ventana.descT.setPlainText(str(ciudad[0]))
+                self.ventana.show()
+
+            except sqlite3.Error as e:
+                print(e)
+            except Exception as e:
+                print(e)
+        else:
+            self.ventana.descT.setPlainText(self.desc_Sitio.toPlainText())
+            self.ventana.show()
 
     def verUbicSitio(self):
         # Función que permite al usuario ver el clima y la ubicación actual en un mapa
@@ -189,6 +220,7 @@ class VerSitios(QMainWindow, Ui_manejarSitios):
         self.aviso_ciudadNoSeleccionada.hide()
         if self.sitioComboBox.currentIndex() != -1:
             self.frame_sitios.show()
+            self.planificar_visita.show()
             self.ubiClima_sitio.show()
             self.nombreSitio.setText(self.sitioComboBox.currentText())
             self.nombreCiudad.setText(self.ciudadComboBox.currentText())
@@ -196,8 +228,10 @@ class VerSitios(QMainWindow, Ui_manejarSitios):
             idC = self.conexion.execute("SELECT c.ID FROM Ciudades c WHERE c.Nombre = ?", (self.ciudadComboBox.currentText(),)).fetchone()
             idCiudad = int(idC[0])
 
-            sitio = self.conexion.execute("SELECT c.Descripcion, c.Imagen, s.Descripcion, s.Imagen FROM Ciudades c, Sitios s WHERE s.Nombre = ? AND s.Ciudad = ?", (self.sitioComboBox.currentText(), idCiudad,)).fetchone()
+            sitio = self.conexion.execute("SELECT c.Descripcion, c.Imagen, s.Descripcion, s.Imagen FROM Ciudades c, Sitios s WHERE s.Nombre = ? AND s.Ciudad = ? AND s.Ciudad = c.ID", (self.sitioComboBox.currentText(), idCiudad,)).fetchone()
             if sitio:
+                self.aviso_sitio.hide()
+
                 descC = sitio[0]
                 imagenC = sitio[1]
                 descS = sitio[2]
@@ -228,7 +262,13 @@ class VerSitios(QMainWindow, Ui_manejarSitios):
     def cargarSitiosCiudad(self):
         # Función que carga los sitios de la ciudad elegida
         if self.ciudades > 0:
+            self.planificar_visita.show()
+            self.ubiClima_sitio.show()
+
             self.sitioComboBox.clear()
+            self.frame_sitios.hide()
+            self.aviso_ciudadNoSeleccionada.hide()
+            self.aviso_sitio.hide()
 
             cID = self.conexion.execute("SELECT c.ID FROM Ciudades c WHERE c.Nombre = ?", (self.ciudadComboBox.currentText(),))
             ciudadID = cID.fetchone()
@@ -240,14 +280,21 @@ class VerSitios(QMainWindow, Ui_manejarSitios):
                 for sitio in sitios:
                     self.sitioComboBox.addItem(sitio[0])
                     self.frame_sitios.hide()
-                    self.ubiClima_sitio.hide()
                     self.sitioComboBox.setCurrentIndex(-1)
 
                 if self.sitioComboBox.count() > 0:
                     self.aviso_ciudadNoSeleccionada.hide()
+
+                    self.aviso_sitio.setText("SELECCIONE UN SITIO")
+                    self.aviso_sitio.show()
+                else:
+                    self.aviso_ciudadNoSeleccionada.hide()
+
+                    self.aviso_sitio.setText(self.ciudadComboBox.currentText() + " NO TIENE SITIOS ASOCIADOS")
+                    self.aviso_sitio.show()
             else:
-                self.aviso_ciudadNoSeleccionada.setText(self.ciudadComboBox.currentText() + " NO TIENE SITIOS ASOCIADOS")
-                self.aviso_ciudadNoSeleccionada.show()
+                self.aviso_sitio.setText(self.ciudadComboBox.currentText() + " NO TIENE SITIOS ASOCIADOS")
+                self.aviso_sitio.show()
                 self.frame_sitios.hide()
 
     def cargarCiudades(self):

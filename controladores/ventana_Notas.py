@@ -28,6 +28,7 @@ class Notas(QMainWindow, Ui_notas):
 
         # Variables importantes
         self.rutafichero = rutafichero
+        self.formato = None
 
         # Acciones
         self.texto.textChanged.connect(self.actualizarEstado)
@@ -50,7 +51,7 @@ class Notas(QMainWindow, Ui_notas):
     def exportarPDF(self):
         # Función que permite al usuario exportar a un fichero PDF su contenido textual
         rutafichero, _ = QFileDialog.getSaveFileName(None, "Seleccionar destino de exportación", "", "PDF (*.pdf)")
-        info = f"<html><head><title>{rutafichero.split("/")[-1]}</title><style>p{{font-size:14px;}}</style></head><body><p>{self.texto.toPlainText()}</p></body></html>"
+        info = f"<html><head><title>{rutafichero.split("/")[-1]}</title><style>p{{font-size:14px;font-family:{self.formato if self.formato != None else ""};}}</style></head><body><p>{self.texto.toPlainText()}</p></body></html>"
         
         if rutafichero:
             try:
@@ -76,7 +77,7 @@ class Notas(QMainWindow, Ui_notas):
     def exportarHTML(self):
         # Función que permite al usuario exportar a un fichero HTML su contenido textual
         rutafichero, _ = QFileDialog.getSaveFileName(None, "Seleccionar destino de exportación", "", "HyperText Markup Language file (*.html)")
-        info = f"<html><head><title>{rutafichero.split("/")[-1]}</title><style>p{{font-size:14px;}}</style></head><body><p>{self.texto.toPlainText()}</p></body></html>"
+        info = f"<html><head><title>{rutafichero.split("/")[-1]}</title><style>p{{font-size:14px;font-family:{self.formato if self.formato != None else ""};}}</style></head><body><p>{self.texto.toPlainText()}</p></body></html>"
         if rutafichero:
             with open(rutafichero, "w", encoding="utf-8") as exportar:
                 try:
@@ -198,6 +199,7 @@ class Notas(QMainWindow, Ui_notas):
     def nuevoFormatoTXT(self):
         # Función que devuelve el nuevo formato de texto que el usuario haya seleccionado
         self.texto.setFont(self.ventana.formatoComboBox.currentFont())
+        self.formato = self.ventana.formatoComboBox.currentFont().toString().split(",")[0]
 
     def mostrarAyuda(self):
         # Función que muestra una ayuda práctica al usuario

@@ -329,10 +329,16 @@ border-radius: 10px</string>
      <property name="geometry">
       <rect>
        <x>320</x>
-       <y>90</y>
+       <y>45</y>
        <width>211</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
      <property name="font">
       <font>
@@ -343,14 +349,17 @@ border-radius: 10px</string>
       <string notr="true">color: rgb(255, 255, 0);</string>
      </property>
      <property name="text">
-      <string>SELECCIONE UNA CIUDAD PRIMERO</string>
+      <string>SELECCIONE UNA CIUDAD</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
      </property>
     </widget>
     <widget class="QPushButton" name="ubiClima_sitio">
      <property name="geometry">
       <rect>
        <x>660</x>
-       <y>50</y>
+       <y>80</y>
        <width>161</width>
        <height>31</height>
       </rect>
@@ -377,6 +386,70 @@ border-radius:15px</string>
       <size>
        <width>32</width>
        <height>24</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="aviso_sitio">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>90</y>
+       <width>321</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 0);</string>
+     </property>
+     <property name="text">
+      <string>SELECCIONE UN SITIO</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="planificar_visita">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>35</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:15px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 87, 255, 255), stop:1 rgba(255, 255, 255, 255));
+color:black;</string>
+     </property>
+     <property name="text">
+      <string>Planificar Visita</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../recursos/iconos/visita_turismo.png</normaloff>../recursos/iconos/visita_turismo.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
       </size>
      </property>
     </widget>

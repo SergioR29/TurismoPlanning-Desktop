@@ -225,19 +225,19 @@ class Ui_planificarTareas(object):
 "border-radius:0px;\n"
 "border:none;\n"
 "padding:1px;")
-        self.descartar = QPushButton(planificarTareas)
-        self.descartar.setObjectName(u"descartar")
-        self.descartar.setGeometry(QRect(220, 630, 121, 41))
+        self.cerrar = QPushButton(planificarTareas)
+        self.cerrar.setObjectName(u"cerrar")
+        self.cerrar.setGeometry(QRect(240, 630, 111, 41))
         font3 = QFont()
         font3.setPointSize(11)
         font3.setBold(True)
-        self.descartar.setFont(font3)
-        self.descartar.setStyleSheet(u"color: rgb(0, 0, 0);\n"
+        self.cerrar.setFont(font3)
+        self.cerrar.setStyleSheet(u"color: rgb(0, 0, 0);\n"
 "background-color: rgb(0, 170, 255);")
         icon3 = QIcon()
-        icon3.addFile(u"../recursos/iconos/ic_eliminar.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.descartar.setIcon(icon3)
-        self.descartar.setIconSize(QSize(24, 25))
+        icon3.addFile(u"../recursos/iconos/cerrar.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.cerrar.setIcon(icon3)
+        self.cerrar.setIconSize(QSize(24, 25))
         self.guardarTarea = QPushButton(planificarTareas)
         self.guardarTarea.setObjectName(u"guardarTarea")
         self.guardarTarea.setGeometry(QRect(470, 630, 111, 41))
@@ -384,9 +384,22 @@ class Ui_planificarTareas(object):
         icon5.addFile(u"../recursos/iconos/refrescar.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.refrescar.setIcon(icon5)
         self.refrescar.setIconSize(QSize(24, 24))
+        self.ayuda = QToolButton(planificarTareas)
+        self.ayuda.setObjectName(u"ayuda")
+        self.ayuda.setGeometry(QRect(760, 640, 40, 40))
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.ayuda.sizePolicy().hasHeightForWidth())
+        self.ayuda.setSizePolicy(sizePolicy3)
+        self.ayuda.setStyleSheet(u"background-color: rgb(26, 26, 26);border:none;")
+        icon6 = QIcon()
+        icon6.addFile(u"../recursos/iconos/ayuda.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.ayuda.setIcon(icon6)
+        self.ayuda.setIconSize(QSize(40, 40))
 
         self.retranslateUi(planificarTareas)
-        self.descartar.clicked.connect(planificarTareas.close)
+        self.cerrar.clicked.connect(planificarTareas.close)
 
         QMetaObject.connectSlotsByName(planificarTareas)
     # setupUi
@@ -403,7 +416,7 @@ class Ui_planificarTareas(object):
         self.horaDeFinalizacionTimeEdit.setDisplayFormat(QCoreApplication.translate("planificarTareas", u"H:mm", None))
         self.categoriaLabel.setText(QCoreApplication.translate("planificarTareas", u"Categor\u00eda", None))
         self.crearCategoria.setText("")
-        self.descartar.setText(QCoreApplication.translate("planificarTareas", u" Descartar", None))
+        self.cerrar.setText(QCoreApplication.translate("planificarTareas", u" Cerrar", None))
         self.guardarTarea.setText(QCoreApplication.translate("planificarTareas", u"  Guardar", None))
         self.label.setText(QCoreApplication.translate("planificarTareas", u"DESCRIPCI\u00d3N", None))
         self.prioridadLabel.setStyleSheet(QCoreApplication.translate("planificarTareas", u"0", None))
@@ -414,5 +427,6 @@ class Ui_planificarTareas(object):
         self.incluir_HI.setText(QCoreApplication.translate("planificarTareas", u"\u00bfIncluir?", None))
         self.incluir_HF.setText(QCoreApplication.translate("planificarTareas", u"\u00bfIncluir?", None))
         self.refrescar.setText("")
+        self.ayuda.setText(QCoreApplication.translate("planificarTareas", u"...", None))
     # retranslateUi
 

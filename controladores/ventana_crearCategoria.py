@@ -13,7 +13,7 @@ class CrearCategoria(QWidget, Ui_crearCategoria):
         self.setWindowIcon(QIcon(os.getcwd() + "/recursos/iconos/categorias.png"))
         self.color.setIcon(QIcon(os.getcwd() + "/recursos/iconos/ic_selectorColor.png"))
 
-        self.descartar.setIcon(QIcon(os.getcwd() + "/recursos/iconos/ic_descartar.png"))
+        self.cerrar.setIcon(QIcon(os.getcwd() + "/recursos/iconos/cerrar.png"))
         self.guardarCategoria.setIcon(QIcon(os.getcwd() + "/recursos/iconos/ic_guardar.png"))
 
         # Copiar la BD a la carpeta del usuario (para que no sea de sólo lectura)

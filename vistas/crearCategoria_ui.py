@@ -94,20 +94,22 @@ class Ui_crearCategoria(object):
         self.prioridadSpinBox.setAccelerated(False)
         self.prioridadSpinBox.setProperty(u"showGroupSeparator", False)
         self.prioridadSpinBox.setMinimum(1)
+        self.prioridadSpinBox.setMaximum(999999999)
 
         self.formLayout.setWidget(1, QFormLayout.ItemRole.FieldRole, self.prioridadSpinBox)
 
-        self.descartar = QPushButton(crearCategoria)
-        self.descartar.setObjectName(u"descartar")
-        self.descartar.setGeometry(QRect(80, 145, 91, 31))
+        self.cerrar = QPushButton(crearCategoria)
+        self.cerrar.setObjectName(u"cerrar")
+        self.cerrar.setGeometry(QRect(80, 145, 91, 31))
         font3 = QFont()
         font3.setBold(True)
-        self.descartar.setFont(font3)
-        self.descartar.setStyleSheet(u"color: rgb(0, 0, 0);\n"
+        self.cerrar.setFont(font3)
+        self.cerrar.setStyleSheet(u"color: rgb(0, 0, 0);\n"
 "background-color: rgb(0, 170, 255);")
         icon1 = QIcon()
-        icon1.addFile(u"../recursos/iconos/ic_descartar.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.descartar.setIcon(icon1)
+        icon1.addFile(u"../recursos/iconos/cerrar.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.cerrar.setIcon(icon1)
+        self.cerrar.setIconSize(QSize(20, 20))
         self.guardarCategoria = QPushButton(crearCategoria)
         self.guardarCategoria.setObjectName(u"guardarCategoria")
         self.guardarCategoria.setGeometry(QRect(230, 145, 91, 31))
@@ -132,7 +134,7 @@ class Ui_crearCategoria(object):
         self.color.setIconSize(QSize(26, 26))
         self.label = QLabel(crearCategoria)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(20, 92, 51, 16))
+        self.label.setGeometry(QRect(20, 92, 51, 31))
         font4 = QFont()
         font4.setPointSize(10)
         font4.setBold(False)
@@ -140,7 +142,7 @@ class Ui_crearCategoria(object):
         self.label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.retranslateUi(crearCategoria)
-        self.descartar.clicked.connect(crearCategoria.hide)
+        self.cerrar.clicked.connect(crearCategoria.hide)
 
         QMetaObject.connectSlotsByName(crearCategoria)
     # setupUi
@@ -149,7 +151,7 @@ class Ui_crearCategoria(object):
         crearCategoria.setWindowTitle(QCoreApplication.translate("crearCategoria", u"Crear categor\u00eda", None))
         self.nombreLabel.setText(QCoreApplication.translate("crearCategoria", u"Nombre", None))
         self.prioridadLabel.setText(QCoreApplication.translate("crearCategoria", u"Prioridad", None))
-        self.descartar.setText(QCoreApplication.translate("crearCategoria", u" Descartar", None))
+        self.cerrar.setText(QCoreApplication.translate("crearCategoria", u" Cerrar", None))
         self.guardarCategoria.setText(QCoreApplication.translate("crearCategoria", u"  Guardar", None))
         self.color.setText(QCoreApplication.translate("crearCategoria", u"...", None))
         self.label.setText(QCoreApplication.translate("crearCategoria", u"Color", None))

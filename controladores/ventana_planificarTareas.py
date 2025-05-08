@@ -75,8 +75,9 @@ class PlanificarTareas(QWidget, Ui_planificarTareas):
 
         self.crearCategoria.setIcon(QIcon(os.getcwd() + "/recursos/iconos/ic_add.png"))
         self.refrescar.setIcon(QIcon(os.getcwd() + "/recursos/iconos/refrescar.png"))
-        self.descartar.setIcon(QIcon(os.getcwd() + "/recursos/iconos/ic_eliminar.png"))
+        self.cerrar.setIcon(QIcon(os.getcwd() + "/recursos/iconos/cerrar.png"))
         self.guardarTarea.setIcon(QIcon(os.getcwd() + "/recursos/iconos/ic_guardar.png"))
+        self.ayuda.setIcon(QIcon(os.getcwd() + "/recursos/iconos/ayuda.png"))
 
         # Acciones
         self.icono_seleccionar.clicked.connect(self.seleccionarImagen)
@@ -84,7 +85,12 @@ class PlanificarTareas(QWidget, Ui_planificarTareas):
         self.refrescar.clicked.connect(self.cargarCategorias)
         self.guardarTarea.clicked.connect(self.guardar)
         self.exportar.itemClicked.connect(self.exportarTarea)
+        self.ayuda.clicked.connect(self.mostrarAyuda)
         
+    def mostrarAyuda(self):
+        # Función que muestra una ayuda práctica al usuario
+        QMessageBox.information(self, "Ayuda", "Las casillas que dicen \"¿Incluir?\" preguntan si tener o no en cuenta esos campos que están al lado izquierdo de cada casilla. Por ejemplo, ¿quiero incluir la fecha de inicio del evento?")
+
     def exportarTarea(self, item, columna):
         # Función que exporta la tarea programada del usuario a HTML o PDF
         buffer1 = QBuffer()
@@ -255,11 +261,10 @@ class PlanificarTareas(QWidget, Ui_planificarTareas):
     def crearCat(self):
         # Función que permite al usuario crear una nueva categoría
         self.ventana = CrearCategoria()
-        self.ventana.descartar.clicked.connect(self.refrescar.hide)
+        self.ventana.cerrar.clicked.connect(self.refrescar.hide)
         self.ventana.guardarCategoria.clicked.connect(self.cargarCategorias)
-
+        self.ventana.guardarCategoria.clicked.connect(self.refrescar.show)
         self.ventana.show()
-        self.refrescar.show()
 
     def seleccionarImagen(self):
         # Función que permite al usuario seleccionar una imagen para añadir una ciudad
@@ -361,6 +366,8 @@ class PlanificarTareas(QWidget, Ui_planificarTareas):
         super().closeEvent(event)
 
     def cerrarVentana(self):
+        self.descT.setPlainText("")
+
         self.ventana.close()
         self.show()
 

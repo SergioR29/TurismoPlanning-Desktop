@@ -28,7 +28,7 @@ class Categorias(QWidget, Ui_categorias):
         self.categoriaID = QComboBox()
 
         self.plantillaHTML = "<!DOCTYPE html><html><head><style>#contenedor{display: flex;align-items: center;}div{margin-bottom: 20px;}#color{width: 40px;height: 40px;border:5px solid black;margin-right: 10px;min-width: 40px;}#prioridad{font-family: 'Segoe UI';font-size: 27px;font-style: normal;position:relative;top: -10px;margin-right: 10px;}#nombre{font-family: 'Segoe UI';font-size: 22px;font-style: normal;vertical-align: center;position: relative;top: -10px;flex-grow: 1}</style></head><body>"
-        self.plantillaPDF = """<!DOCTYPE html><html><head><style>table{margin-bottom: 20px;}#color{width: 40px;height:40px;border:5px solid black;min-width: 40px;}#prioridad{padding-top:10px;font-family: 'Segoe UI';font-size: 27px;}#nombre{padding-left:2px;padding-top:10px;font-family: 'Segoe UI';font-size: 20px;}</style></head><body>"""
+        self.plantillaPDF = """<!DOCTYPE html><html><head><style>table{margin-bottom: 20px;width:auto;height:auto;}#color{width: 40px;height:40px;border:5px solid black;min-width: 40px;}#prioridad{padding-top:10px;font-family: 'Segoe UI';font-size: 27px;width:auto;height:auto;border-bottom:1px solid black;}#nombre{padding-top:5px;width:auto;height:auto;font-family: 'Segoe UI';font-size: 20px;}</style></head><body>"""
 
         self.infoHTML = ""
         self.infoPDF = ""
@@ -158,7 +158,6 @@ class Categorias(QWidget, Ui_categorias):
                 self.ventana.color.setIcon(QIcon())
                 
                 self.ventana.show()
-                self.infoHTML = ""
             else:
                 QMessageBox.warning(self, "Aviso", "No se ha seleccionado ninguna categoría")
 
@@ -176,7 +175,6 @@ class Categorias(QWidget, Ui_categorias):
 
                 QMessageBox.information(self, "Resultado", "Categoría " + self.categoriaComboBox.currentText() + " eliminada correctamente")
                 self.cargarCategorias()
-                self.infoHTML = ""
 
             except sqlite3.Error as e:
                 print(e)
@@ -218,6 +216,9 @@ class Categorias(QWidget, Ui_categorias):
 
     def cargarCategorias(self):
         # Función que carga el listado de categorías creadas que puede seleccionar el usuario
+        self.infoHTML = ""
+        self.infoPDF = ""
+
         if self.conexion:
             self.categoriaComboBox.clear()
             self.categoriaID.clear()
@@ -238,7 +239,7 @@ class Categorias(QWidget, Ui_categorias):
 
                 # Plantilla HTML
                 self.infoHTML += f"<div id=\"contenedor\"><div id=\"color\" style=\"{"background-color:" + str(f[2])}\"></div><label id=\"prioridad\"><strong>{str(f[1])}&deg)&nbsp;&nbsp;&nbsp;</strong></label><label id=\"nombre\">{str(f[0])}</label></div>"
-                self.infoPDF += f"<table id=\"contenedor\"><tr><td id=\"color\" style=\"{"background-color:" + str(f[2])}\"></td></tr><tr><td id=\"prioridad\"><strong>{str(f[1])}&deg)&nbsp;&nbsp;&nbsp;</strong></td><td id=\"nombre\">{str(f[0])}</td></tr></table>"
+                self.infoPDF += f"<table id=\"contenedor\"><tr><td id=\"color\" style=\"{"background-color:" + str(f[2])}\"></td></tr><tr><td id=\"prioridad\"><strong>{str(f[1])}&deg)&nbsp;&nbsp;&nbsp;</strong></td></tr><tr><td id=\"nombre\">{str(f[0])}</td></tr></table>"
         else:
             QMessageBox.critical(self, "Error", "Error de conexión a la BD")
 
