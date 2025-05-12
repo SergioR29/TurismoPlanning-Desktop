@@ -163,7 +163,8 @@ class PlanificarTareas(QWidget, Ui_planificarTareas):
                 if self.fechaDeInicioDateEdit.date() > self.fechaDeFinalizacionDateEdit.date():
                     QMessageBox.warning(None, "Aviso", "La fecha de inicio no puede ser más lejana que la fecha de finalización del evento")
                     return False
-                else:
+                
+                elif self.fechaDeInicioDateEdit.date() == self.fechaDeFinalizacionDateEdit.date():
                     if self.horaDeInicioTimeEdit.time() > self.horaDeFinalizacionTimeEdit.time():
                         QMessageBox.warning(None, "Aviso", "La hora de inicio no puede ser más lejana que la hora de finalización del evento")
                         return False
