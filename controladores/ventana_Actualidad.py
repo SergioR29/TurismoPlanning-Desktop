@@ -18,6 +18,8 @@ class Actualidad(QWidget, Ui_actualidad):
         self.setupUi(self)
 
         self.ciudad_inicial = ciudad
+        if(ciudad == "Guadalajara"):
+            self.ciudad_inicial = "Guadalajara, Castilla-La Mancha, España"
 
         print(f"--- Depuración ---")
         print(f"Valor de self.ciudad_inicial al inicio de __init__: '{self.ciudad_inicial}' (Tipo: {type(self.ciudad_inicial)})")
