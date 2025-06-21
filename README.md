@@ -4,7 +4,7 @@ App ideal para turistas y personas que vivan cerca de la provincia de Guadalajar
 
 ## Tecnologías utilizadas
 
-  Lenguaje de Programación: **_Python_**.  
+  Lenguajes de Programación: **_Python_** y **_JavaScript_**.  
   Entorno de Desarrollo: **_Visual Studio Code_**  
   Patrón de Diseño y Arquitectura: **_MVC_**.  
 
