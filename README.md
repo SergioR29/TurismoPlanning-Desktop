@@ -6,6 +6,8 @@ App ideal para turistas y personas que vivan cerca de la provincia de Guadalajar
 
 Lenguaje de Programación: **_Python_**.  
 Entorno de Desarrollo: **_Visual Studio Code_**  
+Patrón de Diseño y Arquitectura: **_MVC_**.  
+
 Frameworks: **_PySide6 (GUI de Escritorio)_**.  
 Base de Datos: **_SQLite_**.  
 Empaquetado y Distribución: **_PyInstaller_** (Empaquetado) y **_InstallForge_** (Distribución).  
