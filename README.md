@@ -12,6 +12,7 @@ Empaquetado y Distribución: **_PyInstaller_** (Empaquetado) y **_InstallForge_*
   
 APIs RESTful: **_OWM_** (OpenWeatherMap), **_IPinfo_**.  
 Librerías (Mapas y GPS): **_Leaflet_**.  
+
 Librerías (Documentos): **_xhtml2pdf_**.  
 Preparación de plantillas HTML: **_Formateo de strings nativo_**.  
 
