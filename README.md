@@ -8,14 +8,14 @@ App ideal para turistas y personas que vivan cerca de la provincia de Guadalajar
   Entorno de Desarrollo: **_Visual Studio Code_**  
   Patrón de Diseño y Arquitectura: **_MVC_**.  
 
-- Frameworks: **_PySide6 (GUI de Escritorio)_**.  
-- Base de Datos: **_SQLite_**.  
-- Empaquetado y Distribución: **_PyInstaller_** (Empaquetado) y **_InstallForge_** (Distribución).  
+  Frameworks: **_PySide6 (GUI de Escritorio)_**.  
+  Base de Datos: **_SQLite_**.  
+  Empaquetado y Distribución: **_PyInstaller_** (Empaquetado) y **_InstallForge_** (Distribución).  
   
-- APIs RESTful: **_OWM_** (OpenWeatherMap), **_IPinfo_**.  
-- Librerías (Mapas y GPS): **_Leaflet_**.  
+  APIs RESTful: **_OWM_** (OpenWeatherMap), **_IPinfo_**.  
+  Librerías (Mapas y GPS): **_Leaflet_**.  
 
-- Librerías (Documentos): **_xhtml2pdf_**.  
-- Preparación de plantillas HTML: **_Formateo de strings nativo_**.  
+  Librerías (Documentos): **_xhtml2pdf_**.  
+  Preparación de plantillas HTML: **_Formateo de strings nativo_**.  
 
 ![Captura de pantalla 2025-06-17 114141](https://github.com/user-attachments/assets/95c131f5-6936-4565-b80a-ff728e2d9d2c)
