@@ -18,4 +18,5 @@ App ideal para turistas y personas que vivan cerca de la provincia de Guadalajar
 - Librerías (Documentos): **_xhtml2pdf_**.  
 - Preparación de plantillas HTML: **_Formateo de strings nativo_**.  
 
+
 ![Captura de pantalla 2025-06-17 114141](https://github.com/user-attachments/assets/95c131f5-6936-4565-b80a-ff728e2d9d2c)
