@@ -9,6 +9,7 @@ Entorno de Desarrollo: **_Visual Studio Code_**
 Frameworks: **_PySide6 (GUI de Escritorio)_**.  
 Base de Datos: **_SQLite_**.  
 Empaquetado y Distribución: **_PyInstaller_** (Empaquetado) y **_InstallForge_** (Distribución).  
+  
 APIs RESTful: **_OpenWeatherMap_** (OWM), **_IPinfo_**.  
 
 ![Captura de pantalla 2025-06-17 114141](https://github.com/user-attachments/assets/95c131f5-6936-4565-b80a-ff728e2d9d2c)
