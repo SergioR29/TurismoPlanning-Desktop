@@ -31,8 +31,8 @@ class Actualidad(QWidget, Ui_actualidad):
         lon_determinada = -3.703790 # Coordenadas por defecto (Madrid)
         temperatura_str = "Obteniendo datos..."
 
-        ipinfo_access_token = '30c143bdb61a4b'
-        openweathermap_api_key = 'b937163bd93f3119e2ee35427a5d7eb2'
+        ipinfo_access_token = ''
+        openweathermap_api_key = ''
         base_url_owm = "http://api.openweathermap.org/data/2.5/weather?"
 
 
