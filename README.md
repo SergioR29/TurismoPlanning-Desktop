@@ -4,9 +4,7 @@ App ideal para turistas y personas que vivan cerca de la provincia de Guadalajar
 
 --  
 - Metodología de Desarrollo: **_RUP_**  
-- Compatibilidad: **Windows**  
-
---
+- Compatibilidad: **Windows**
 
 ## Tecnologías utilizadas
 
