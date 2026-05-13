@@ -16,7 +16,7 @@ App ideal para turistas y personas que vivan cerca de la provincia de Guadalajar
   Empaquetado y Distribución: **PyInstaller** (Empaquetado) y **InstallForge** (Distribución).  
   
   APIs RESTful: **OWM** (OpenWeatherMap), **IPinfo**.  
-  Librerías (Mapas y GPS): **Leaflet**.  
+  Librerías (Mapas y GPS): **Leaflet.js**.  
 
   Librerías (Documentos): **xhtml2pdf**.  
   Preparación de plantillas HTML y CSS: **Formateo de strings nativo**.  
