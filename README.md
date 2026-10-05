@@ -1,6 +1,6 @@
 # TurismoPlanning-Desktop
 
-Como trabajo de fin de grado (TFG) del CFGS DAM he desarrollado un proyecto que tiene enfoque turístico en los usuarios de la provincia española de Guadalajara que les permite en una sola aplicación gestionar información de la zona (y alrededores) y de asuntos personales del usuario.
+Como trabajo de fin de grado (TFG) del CFGS DAM he desarrollado un proyecto para Windows que tiene enfoque turístico en los usuarios de la provincia española de Guadalajara que les permite en una sola aplicación gestionar información de la zona (y alrededores) y de asuntos personales del usuario como la planificación de viajes.  
 
 - Metodología de Desarrollo: **RUP**  
 - Compatibilidad: **Windows**
