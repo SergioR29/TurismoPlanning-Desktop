@@ -22,4 +22,4 @@ Como trabajo de fin de grado (TFG) del CFGS DAM he desarrollado un proyecto que 
   Preparación de plantillas HTML y CSS: **Formateo de strings nativo**.  
 
 ## Menú Principal
-![Captura de pantalla 2026-10-10 130550](https://github.com/user-attachments/assets/5daf93e4-031a-46d0-9a63-3f3e2006f4bb)
+![Captura de pantalla 2025-06-17 114141](https://github.com/user-attachments/assets/95c131f5-6936-4565-b80a-ff728e2d9d2c)
